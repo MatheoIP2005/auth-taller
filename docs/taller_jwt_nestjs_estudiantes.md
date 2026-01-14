@@ -565,7 +565,7 @@ export class AuthController {
   /**
    * GET /auth/protected
    * Ejemplo de ruta protegida
-   * Ruta PROTEGIDA - requiere token válido
+   * Ruta PROTEGIDA - requiere token válido.
    */
   @UseGuards(JwtAuthGuard)
   @Get('protected')
