@@ -43,11 +43,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
-    // req.user viene del JwtStrategy.validate()
-    return {
-      message: 'Perfil obtenido exitosamente',
-      user: req.user,
-    };
+    return this.authService.getProfile(req.user.userId);
   }
 
   /**
@@ -59,8 +55,7 @@ export class AuthController {
   @Get('protected')
   protectedRoute(@Request() req) {
     return {
-      message: `¡Hola ${req.user.nombre}! Esta es una ruta protegida.`,
-      timestamp: new Date().toISOString(),
+      message: `¡Hola ${req.user.username}! Esta es una ruta protegida.`,
       userId: req.user.userId,
     };
   }
